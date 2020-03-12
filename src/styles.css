@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background: url("assets/img(11).jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.animax {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+  animation-name: onLeave !important;
+  animation-duration: 0.5s !important;
+}
+
+@keyframes onHover {
+  from {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  to {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes onLeave {
+  from {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  to {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.animax:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2) !important;
+  animation-name: onHover !important;
+  animation-duration: 0.5s !important;
+}
