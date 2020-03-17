@@ -10,6 +10,7 @@ import {LoginService} from '../login.service';
 })
 export class CreateCVComponent implements OnInit {
   username;
+  password;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,6 +20,7 @@ export class CreateCVComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.username = params.get('username');
+      this.password = this.loginService.getPassword();
     });
   }
 

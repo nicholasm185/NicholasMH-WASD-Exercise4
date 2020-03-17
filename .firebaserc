@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "nicholasmh-wads-exercise4": {
+      "hosting": {
+        "CV-Maker": [
+          "nicholasmh-wads-exercise4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "nicholasmh-wads-exercise4"
+  }
+}

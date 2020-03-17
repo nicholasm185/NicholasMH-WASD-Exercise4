@@ -20,6 +20,7 @@ import { CreateCVComponent } from './create-cv/create-cv.component';
       {path: '', redirectTo: 'login', pathMatch: 'full'},
       {path: 'login', component: LoginComponent},
       {path: 'createCV/:username', component: CreateCVComponent},
+      {path: '**', redirectTo: 'login'}
     ])
   ],
   providers: [],
