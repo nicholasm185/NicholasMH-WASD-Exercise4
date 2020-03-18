@@ -157,7 +157,7 @@
           <h1>Ready?</h1>
         </div>
         <div class="card-body">
-          <button class="btn btn-success" type="submit" [disabled]="!cvForm.valid">Submit</button>
+          <button class="btn btn-success" type="submit" [disabled]="!cvForm.valid" (click)="updateData()">Submit</button>
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {User} from './user';
+import {UserData} from './user-data';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,6 @@ import {User} from './user';
 export class LoginService {
   user$: Observable<User>;
   public credential;
-  currData;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -46,7 +46,6 @@ export class LoginService {
         this.initData(this.credential.user);
       }
     });
-
     return this.router.navigate(['/createCV/', this.credential.user.uid]);
   }
 
@@ -94,18 +93,13 @@ export class LoginService {
   }
 
   public updateData(user) {
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<UserData> = this.afs.doc(`users/${this.credential.user.uid}`);
 
     const data = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-
       fullName: user.fullName,
       gender: user.gender,
       number: user.number,
-      shortDesc: user.shortDes,
+      shortDesc: user.shortDesc,
       longDesc: user.longDesc,
       skill1: user.skill1,
       skill2: user.skill2,
