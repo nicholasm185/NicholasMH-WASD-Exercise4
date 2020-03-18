@@ -16,6 +16,7 @@ import {User} from './user';
 export class LoginService {
   user$: Observable<User>;
   public credential;
+  currData;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -37,7 +38,15 @@ export class LoginService {
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
     this.credential = await this.afAuth.auth.signInWithPopup(provider);
-    this.initData(this.credential.user);
+    this.afs.collection(`users`, ref => ref.where('uid', '==', this.credential.user.uid)).snapshotChanges().subscribe(res => {
+      if (res.length > 0) {
+        console.log('Match found.');
+      } else {
+        console.log('Does not exist.');
+        this.initData(this.credential.user);
+      }
+    });
+
     return this.router.navigate(['/createCV/', this.credential.user.uid]);
   }
 
@@ -57,15 +66,15 @@ export class LoginService {
 
       fullName: '',
       gender: '',
-      number: '',
-      shortDes: '',
+      number: 0,
+      shortDesc: '',
       longDesc: '',
       skill1: '',
       skill2: '',
       skill3: '',
-      sk1p: '',
-      sk2p: '',
-      sk3p: '',
+      sk1p: 0,
+      sk2p: 0,
+      sk3p: 0,
       acheivement1: '',
       ac1desc: '',
       acheivement2: '',
@@ -94,28 +103,28 @@ export class LoginService {
       photoURL: user.photoURL,
 
       fullName: user.fullName,
-      // gender: user.gender,
-      // number: user.number,
-      // shortDes: user.shortDes,
-      // longDesc: user.longDesc,
-      // skill1: user.skill1,
-      // skill2: user.skill2,
-      // skill3: user.skill3,
-      // sk1p: user.sk1p,
-      // sk2p: user.sk2p,
-      // sk3p: user.sk3p,
-      // acheivement1: user.acheivement1,
-      // ac1desc: user.ac1desc,
-      // acheivement2: user.acheivement2,
-      // ac2desc: user.ac2desc,
-      // acheivement3: user.acheivement3,
-      // ac3desc: user.ac3desc,
-      // edu1: user.edu1,
-      // edu2: user.edu2,
-      // edu3: user.edu3,
-      // edu1desc: user.edu1desc,
-      // edu2desc: user.edu2desc,
-      // edu3desc: user.edu3desc,
+      gender: user.gender,
+      number: user.number,
+      shortDesc: user.shortDes,
+      longDesc: user.longDesc,
+      skill1: user.skill1,
+      skill2: user.skill2,
+      skill3: user.skill3,
+      sk1p: user.sk1p,
+      sk2p: user.sk2p,
+      sk3p: user.sk3p,
+      acheivement1: user.acheivement1,
+      ac1desc: user.ac1desc,
+      acheivement2: user.acheivement2,
+      ac2desc: user.ac2desc,
+      acheivement3: user.acheivement3,
+      ac3desc: user.ac3desc,
+      edu1: user.edu1,
+      edu2: user.edu2,
+      edu3: user.edu3,
+      edu1desc: user.edu1desc,
+      edu2desc: user.edu2desc,
+      edu3desc: user.edu3desc,
     };
 
     return userRef.set(data, { merge: true });

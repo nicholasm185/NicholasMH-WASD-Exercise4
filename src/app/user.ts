@@ -7,15 +7,15 @@ export interface User {
 
   fullName?: string;
   gender?: string;
-  number?: string;
-  shortDes?: string;
+  number?: number;
+  shortDesc?: string;
   longDesc?: string;
   skill1?: string;
   skill2?: string;
   skill3?: string;
-  sk1p?: string;
-  sk2p?: string;
-  sk3p?: string;
+  sk1p?: number;
+  sk2p?: number;
+  sk3p?: number;
   acheivement1?: string;
   ac1desc?: string;
   acheivement2?: string;

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="loginService.user$ | async as user">
+<div class="container" *ngIf="loginService.user$ | async as user; else loading">
   <div class="row">
     <div class="col">
       <div class="jumbotron">
@@ -8,14 +8,172 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
-      <input class="form-control" type="text" id="firstnamefield" placeholder="{{loginService.credential.user.displayName}}">
-      <button class="btn btn-primary" (click)="updateData()">update data</button>
+
+<form [formGroup]="cvForm">
+  <div class="row p-3">
+    <!-- basic info card -->
+    <div class="col-md-6 p-3">
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-9">
+          <div class="card bg-default animax">
+            <h5 class="card-header">
+              Basic Information
+            </h5>
+            <div class="card-body">
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Full Name</span>
+                </div>
+                <input type="text" id="fullName" class="form-control" placeholder="{{user.fullName}}" formControlName="fullName">
+              </div>
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="genderSelect">Gender</label>
+                </div>
+                <select class="custom-select" id="genderSelect" formControlName="gender">
+                  <option selected value="">Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="-">Choose not to say</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select appropriate data
+                </div>
+              </div>
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Short Description</span>
+                </div>
+                <input type="text" class="form-control" id="shortDesc" placeholder="{{user.shortDesc}}" formControlName="shortDesc">
+              </div>
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Longer Description</span>
+                </div>
+                <textarea class="form-control" id="longDesc" placeholder="{{user.longDesc}}" formControlName="longDesc"></textarea>
+              </div>
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text">Phone</label>
+                </div>
+                <input class="form-control" type="number" id="number" placeholder="{{user.number}}" formControlName="number">
+                <div class="invalid-feedback">
+                  please insert your phone number
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+      </div>
     </div>
-    <div class="col-4"></div>
+
+    <!-- Skills Card -->
+    <div class="col-md-6 p-3">
+      <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-9">
+          <div class="card bg-default animax">
+            <h5 class="card-header">
+              Skills you're confident in
+            </h5>
+            <div class="card-body">
+
+              <div class="input-group input-group-md mb-3 pt-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Skill 1</span>
+                </div>
+                <input type="text" class="form-control" id="skill1" placeholder="{{user.skill1}}" formControlName="skill1">
+              </div>
+
+              <label class="text-muted" for="skill1pro">Skill 1 Proficiency</label>
+              <div class="input-group input-group-md md-3">
+                <span class="font-weight-bold purple-text mr-2 mt-1">0</span>
+                <div class="range-field w-75">
+                  <input type="range" class="custom-range" min="0" max="10" id="skill1pro" formControlName="sk1p">
+                </div>
+                <span class="font-weight-bold blue-text ml-2 mt-1">10</span>
+              </div>
+
+              <div class="input-group input-group-md mb-3 pt-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Skill 2</span>
+                </div>
+                <input type="text" class="form-control" id="skill2" placeholder="{{user.skill2}}" formControlName="skill2">
+              </div>
+
+              <label class="text-muted" for="skill2pro">Skill 2 Proficiency</label>
+              <div class="input-group input-group-md md-3">
+                <span class="font-weight-bold purple-text mr-2 mt-1">0</span>
+                <div class="range-field w-75">
+                  <input type="range" class="custom-range" min="0" max="10" id="skill2pro" formControlName="sk2p">
+                </div>
+                <span class="font-weight-bold blue-text ml-2 mt-1">10</span>
+              </div>
+
+              <div class="input-group input-group-md mb-3 pt-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Skill 3</span>
+                </div>
+                <input type="text" class="form-control" id="skill3" placeholder="{{user.skill3}}" formControlName="skill3">
+              </div>
+
+              <label class="text-muted" for="skill2pro">Skill 3 Proficiency</label>
+              <div class="input-group input-group-md md-3">
+                <span class="font-weight-bold purple-text mr-2 mt-1">0</span>
+                <div class="range-field w-75">
+                  <input type="range" class="custom-range" min="0" max="10" id="skill3pro" formControlName="sk3p">
+                </div>
+                <span class="font-weight-bold blue-text ml-2 mt-1">10</span>
+              </div>
+
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="row" >
+    <div class="col-md-4"></div>
+    <div class="col-4" *ngIf="cvForm.valid">
+      <div class="card">
+        <div class="card-header">
+          <h1>Ready?</h1>
+        </div>
+        <div class="card-body">
+          <button class="btn btn-success" type="submit" [disabled]="!cvForm.valid">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+
+  </div>
+
+</form>
 
 
 </div>
+
+<ng-template #loading>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Loading.... Please wait</h1>
+    </div>
+  </div>
+</ng-template>
