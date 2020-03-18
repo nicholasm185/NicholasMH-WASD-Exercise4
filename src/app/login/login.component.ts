@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   onClickLogin() {
-    this.loginService.sumbitData(this.loginForm.controls.username.value, Md5.hashStr(this.loginForm.controls.password.value));
-    this.router.navigate(['/createCV', this.loginForm.controls.username.value]);
+    // this.loginService.sumbitData(this.loginForm.controls.username.value, Md5.hashStr(this.loginForm.controls.password.value));
+    // this.router.navigate(['/createCV', this.loginForm.controls.username.value]);
     // window.alert(this.loginForm.controls.username.value + this.loginForm.controls.password.value);
   }
 

@@ -1,3 +1,21 @@
-<p>{{username}}</p>
-<p>{{loginService.getUsername()}}</p>
-<p>{{loginService.getPassword()}}</p>
+<div class="container" *ngIf="loginService.user$ | async as user">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron">
+        <h1>Hello {{user.displayName}}!</h1>
+        <p class="lead">Welcome to your CV Maker!</p>
+        <button class="btn btn-danger" (click)="loginService.signOut()">Sign Out</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <input class="form-control" type="text" id="firstnamefield" placeholder="{{loginService.credential.user.displayName}}">
+      <button class="btn btn-primary" (click)="updateData()">update data</button>
+    </div>
+    <div class="col-4"></div>
+  </div>
+
+
+</div>

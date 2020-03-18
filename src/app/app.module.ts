@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateCVComponent } from './create-cv/create-cv.component';
+import {AuthGuard} from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { CreateCVComponent } from './create-cv/create-cv.component';
     RouterModule.forRoot([
       {path: '', redirectTo: 'login', pathMatch: 'full'},
       {path: 'login', component: LoginComponent},
-      {path: 'createCV/:username', component: CreateCVComponent},
+      {path: 'createCV/:uid', component: CreateCVComponent},
       {path: '**', redirectTo: 'login'}
     ])
   ],
