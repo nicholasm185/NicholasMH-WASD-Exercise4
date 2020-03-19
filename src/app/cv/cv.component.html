@@ -80,15 +80,15 @@
           <div class="card-body">
             <h5 id="skill1">{{user.skill1}}</h5>
             <div class="progress">
-              <div id="sk1p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+              <div id="sk1p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: sk1p}" ></div>
             </div>
             <h5 id="skill2">{{user.skill2}}</h5>
             <div class="progress">
-              <div id="sk2p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+              <div id="sk2p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: sk2p}"></div>
             </div>
             <h5 id="skill3">{{user.skill3}}</h5>
             <div class="progress">
-              <div id="sk3p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+              <div id="sk3p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: sk3p}"></div>
             </div>
           </div>
           <div class="card-footer">
@@ -98,3 +98,4 @@
     </div>
   </div>
 </div>
+<button class="btn btn-primary" (click)="buttonPress()">Clicke meememmemeem</button>
