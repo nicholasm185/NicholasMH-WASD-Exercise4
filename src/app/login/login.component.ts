@@ -13,7 +13,7 @@ import {LoginService} from '../login.service';
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   });
 
@@ -27,9 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   onClickLogin() {
-    // this.loginService.sumbitData(this.loginForm.controls.username.value, Md5.hashStr(this.loginForm.controls.password.value));
-    // this.router.navigate(['/createCV', this.loginForm.controls.username.value]);
-    // window.alert(this.loginForm.controls.username.value + this.loginForm.controls.password.value);
+    const {email, password} = this.loginForm.value;
+    this.loginService.emailSignIn(email, password);
   }
 
 }

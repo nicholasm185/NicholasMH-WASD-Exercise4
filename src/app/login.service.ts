@@ -54,6 +54,26 @@ export class LoginService {
     return this.router.navigate(['/']);
   }
 
+
+  emailSignIn(email: string, password: string) {
+    this.credential = this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
+      res => {
+        // this.afs.collection(`users`, ref => ref.where('uid', '==', this.credential.user.uid)).snapshotChanges().subscribe(res => {
+        //   if (res.length > 0) {
+        //     console.log('Match found.');
+        //   } else {
+        //     console.log('Does not exist.');
+        //     this.initData(this.credential.user);
+        //   }
+        // });
+        console.log('Email login');
+        // return this.router.navigate(['/createCV/', this.credential.user.uid]);
+      }
+    ).catch(err => {
+      console.log('Something wrong:' , err.message);
+    });
+  }
+
   private initData(user) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 

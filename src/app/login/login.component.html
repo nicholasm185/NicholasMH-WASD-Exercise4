@@ -7,7 +7,14 @@
         <h1>Welcome to CV Maker</h1>
       </div>
       <div class="card-body">
-        <p class="lead">
+        <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()">
+          <label for="email">Email</label>
+          <input class="form-control" type="email" formControlName="email" id="email">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" formControlName="password" id="password">
+          <button class="btn btn-primary mt-3" type="submit" [disabled]="!loginForm.valid" >Login/Sign Up</button>
+        </form>
+        <p class="lead mt-3">
           Please use the following button to login with our Google Account
         </p>
         <div class="btn btn-primary" (click)="loginService.googleSignin()">Login with Google <i class='fab fa-google'></i></div>

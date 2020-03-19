@@ -1,0 +1,100 @@
+<div class="row-md p-3">
+
+</div>
+<div class="row" *ngIf="loginService.user$ | async as user">
+  <div class="col-md-3">
+
+  </div>
+  <div class="col-md-6" style="">
+    <h1 class="display1 text-center" id="fullname">{{user.fullName}}</h1>
+    <h2 class="lead text-center" id="shortDesc">{{user.shortDesc}}</h2>
+  </div>
+  <div class="col-md-3">
+
+  </div>
+
+</div>
+<div class="row pt-3" *ngIf="loginService.user$ | async as user">
+  <div class="col-md-4 p-3">
+    <div class="card text-white bg-info animax">
+      <h4 class="card-header">
+        <i class="far fa-address-card"></i> My Info
+      </h4>
+      <div class="card-body">
+        <blockquote class="blockquote">
+          <p class="mb-0" id="longDesc">{{user.longDesc}}</p>
+        </blockquote>
+        <h5><i class="fa fa-address-book"></i> Contact Me</h5>
+        <p><i class="fas fa-phone-alt"></i> {{user.number}}<br>
+          <i class="far fa-envelope"></i> {{user.email}}</p>
+      </div>
+      <div class="card-footer">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-12 p-3">
+        <div class="card animax">
+          <h4 class="card-header">
+            <i class="fas fa-user-graduate"></i> Education
+          </h4>
+          <div class="card-body">
+            <h5 id="edu1">{{user.edu1}}</h5>
+            <p id="edu1desc">{{user.edu1desc}}</p>
+            <h5 id="edu2">{{user.edu2}}</h5>
+            <p id="edu2desc">{{user.edu2desc}}</p>
+            <h5 id="edu3">{{user.edu3}}</h5>
+            <p id="edu3desc">{{user.edu3desc}}</p>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 p-3">
+        <div class="card animax">
+          <h5 class="card-header">
+            <i class="fas fa-gem"></i> Achievements
+          </h5>
+          <div class="card-body">
+            <h5 id="acheivement1">{{user.acheivement1}}</h5>
+            <p id="ac1desc">{{user.ac1desc}}</p>
+            <h5 id="acheivement2">{{user.acheivement2}}</h5>
+            <p id="ac2desc">{{user.ac2desc}}</p>
+            <h5 id="acheivement3">{{user.acheivement3}}</h5>
+            <p id="ac3desc">{{user.ac3desc}}</p>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 p-3">
+        <div class="card animax">
+          <h5 class="card-header">
+            <i class="fas fa-wrench"></i> Skills
+          </h5>
+          <div class="card-body">
+            <h5 id="skill1">{{user.skill1}}</h5>
+            <div class="progress">
+              <div id="sk1p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+            <h5 id="skill2">{{user.skill2}}</h5>
+            <div class="progress">
+              <div id="sk2p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+            <h5 id="skill3">{{user.skill3}}</h5>
+            <div class="progress">
+              <div id="sk3p" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
@@ -12,12 +11,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateCVComponent } from './create-cv/create-cv.component';
 import {AuthGuard} from './auth.guard';
+import { AppRoutingModule } from './app-routing.module';
+import { AdminModule } from './admin/admin.module';
+import { CvComponent } from './cv/cv.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CreateCVComponent
+    CreateCVComponent,
+    CvComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -25,12 +28,8 @@ import {AuthGuard} from './auth.guard';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      {path: '', redirectTo: 'login', pathMatch: 'full'},
-      {path: 'login', component: LoginComponent},
-      {path: 'createCV/:uid', component: CreateCVComponent},
-      {path: '**', redirectTo: 'login'}
-    ])
+    AdminModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
